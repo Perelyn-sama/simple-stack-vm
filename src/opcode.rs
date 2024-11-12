@@ -10,6 +10,12 @@ pub enum Opcode {
     Load = 0x06,
     Jmp = 0x07,
     JumpIf = 0x08,
+    Dup = 0x09,
+    Swap = 0x10,
+    Rot = 0x11,
+    Over = 0x12,
+    Pick = 0x13,
+    Mul = 0x14,
 }
 
 impl TryFrom<u8> for Opcode {
@@ -25,6 +31,12 @@ impl TryFrom<u8> for Opcode {
             0x06 => Ok(Opcode::Load),
             0x07 => Ok(Opcode::Jmp),
             0x08 => Ok(Opcode::JumpIf),
+            0x09 => Ok(Opcode::Dup),
+            0x10 => Ok(Opcode::Swap),
+            0x11 => Ok(Opcode::Rot),
+            0x12 => Ok(Opcode::Over),
+            0x13 => Ok(Opcode::Pick),
+            0x14 => Ok(Opcode::Mul),
             _ => Err(VMError::InvalidOpcode),
         }
     }
